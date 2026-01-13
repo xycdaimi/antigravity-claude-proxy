@@ -5,6 +5,7 @@ import { logger } from './utils/logger.js';
 
 // Default config
 const DEFAULT_CONFIG = {
+    apiKey: '',
     webuiPassword: '',
     debug: false,
     logLevel: 'info',
@@ -54,6 +55,7 @@ function loadConfig() {
         }
 
         // Environment overrides
+        if (process.env.API_KEY) config.apiKey = process.env.API_KEY;
         if (process.env.WEBUI_PASSWORD) config.webuiPassword = process.env.WEBUI_PASSWORD;
         if (process.env.DEBUG === 'true') config.debug = true;
 
