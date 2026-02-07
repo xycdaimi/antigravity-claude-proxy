@@ -721,7 +721,7 @@ window.Components.serverConfig = () => ({
                 rows: [
                     { label: store.t('defaultCooldown') || 'Default Cooldown', value: this.formatMsValue(cfg.defaultCooldownMs), differs: differs(cfg.defaultCooldownMs, cur.defaultCooldownMs), key: 'defaultCooldownMs', min: V.DEFAULT_COOLDOWN_MIN, max: V.DEFAULT_COOLDOWN_MAX, step: 1000, suffix: 'ms' },
                     { label: store.t('maxWaitThreshold') || 'Max Wait Before Error', value: this.formatMsValue(cfg.maxWaitBeforeErrorMs), differs: differs(cfg.maxWaitBeforeErrorMs, cur.maxWaitBeforeErrorMs), key: 'maxWaitBeforeErrorMs', min: V.MAX_WAIT_MIN, max: V.MAX_WAIT_MAX, step: 1000, suffix: 'ms' },
-                    { label: 'Max Accounts', value: cfg.maxAccounts ?? '—', differs: differs(cfg.maxAccounts, cur.maxAccounts), key: 'maxAccounts', min: V.MAX_ACCOUNTS_MIN, max: V.MAX_ACCOUNTS_MAX, step: 1 },
+                    { label: store.t('maxAccounts') || 'Max Accounts', value: cfg.maxAccounts ?? '—', differs: differs(cfg.maxAccounts, cur.maxAccounts), key: 'maxAccounts', min: V.MAX_ACCOUNTS_MIN, max: V.MAX_ACCOUNTS_MAX, step: 1 },
                     { label: store.t('switchAccountDelay') || 'Switch Account Delay', value: this.formatMsValue(cfg.switchAccountDelayMs), differs: differs(cfg.switchAccountDelayMs, cur.switchAccountDelayMs), key: 'switchAccountDelayMs', min: V.SWITCH_ACCOUNT_DELAY_MIN, max: V.SWITCH_ACCOUNT_DELAY_MAX, step: 1000, suffix: 'ms' },
                 ]
             },
