@@ -1052,7 +1052,7 @@
                                 class="mt-1.5 bg-space-800/50 rounded border border-space-border/30 px-2.5 py-2">
                                 <!-- Strategy badge -->
                                 <div class="mb-2">
-                                    <span class="inline-block text-[10px] font-semibold px-2 py-0.5 rounded-full border"
+                                    <span class="inline-block text-[11px] font-semibold px-2 py-0.5 rounded-full border"
                                         :class="preview.strategyDiffers ? 'text-neon-cyan border-neon-cyan/30 bg-neon-cyan/5' : 'text-neon-purple border-neon-purple/30 bg-neon-purple/5'"
                                         x-text="preview.strategyLabel">
                                     </span>
@@ -1060,11 +1060,11 @@
                                 <!-- Sections -->
                                 <template x-for="section in preview.sections" :key="section.label">
                                     <div class="mb-1.5 last:mb-0">
-                                        <div class="text-[9px] uppercase tracking-wider text-gray-600 font-semibold mb-0.5" x-text="section.label"></div>
+                                        <div class="text-[10px] uppercase tracking-wider text-gray-600 font-semibold mb-0.5" x-text="section.label"></div>
                                         <template x-for="row in section.rows" :key="row.label">
                                             <div class="flex justify-between items-center py-px">
-                                                <span class="text-[10px] text-gray-500" x-text="row.label"></span>
-                                                <span class="text-[10px] font-mono"
+                                                <span class="text-[11px] text-gray-500" x-text="row.label"></span>
+                                                <span class="text-[11px] font-mono"
                                                     :class="row.differs ? 'text-neon-cyan' : 'text-gray-400'"
                                                     x-text="row.value"></span>
                                             </div>
