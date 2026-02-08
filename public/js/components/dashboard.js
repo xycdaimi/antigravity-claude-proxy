@@ -295,7 +295,7 @@ window.Components.dashboard = () => ({
             const matchesAnyPreset = presets.some(preset => {
                 return relevantKeys.every(key => {
                     const localVal = localConfig.env?.[key] || '';
-                    const presetVal = preset.config[key] || '';
+                    const presetVal = preset.config?.[key] || '';
                     return localVal === presetVal;
                 });
             });
