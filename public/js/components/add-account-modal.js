@@ -27,8 +27,37 @@ window.Components.addAccountModal = () => ({
 
     async copyLink() {
         if (!this.authUrl) return;
-        await navigator.clipboard.writeText(this.authUrl);
-        Alpine.store('global').showToast(Alpine.store('global').t('linkCopied'), 'success');
+
+        const store = Alpine.store('global');
+
+        // 简化逻辑：优先尝试 Clipboard API；无论成功与否，都选中输入框，保证至少可以手动 Ctrl+C
+        try {
+            // 先选中可见的输入框，方便浏览器策略不允许自动复制时，用户可以直接 Ctrl+C
+            const modal = document.getElementById('add_account_modal');
+            const inputEl = modal ? modal.querySelector('input[readonly]') : null;
+            if (inputEl) {
+                inputEl.focus();
+                inputEl.select();
+            }
+
+            let copied = false;
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                await navigator.clipboard.writeText(this.authUrl);
+                copied = true;
+            }
+
+            if (copied) {
+                store.showToast(store.t('linkCopied'), 'success');
+            } else {
+                // 在不支持 Clipboard API 或被策略拦截的环境下，提示用户手动复制（此时输入框已被选中）
+                store.showToast(store.t('authLinkLabel') + ' ' + store.t('linkCopied'), 'info');
+            }
+        } catch (e) {
+            console.error('Failed to copy auth URL:', e);
+            // 失败时给出可读提示，但不阻塞用户手动复制
+            store.showToast(store.t('authLinkLabel') + ' ' + this.authUrl, 'error');
+        }
     },
 
     async initManualAuth(event) {
