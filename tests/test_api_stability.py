@@ -7,7 +7,7 @@ import base64
 from datetime import datetime
 import re
 
-API_URL = "http://47.77.196.94:3001/v1/messages"
+API_URL = "http:///v1/messages"
 API_KEY = "dummy"
 OUTPUT_DIR = "tests/imgs"  # Directory to save generated images
 
